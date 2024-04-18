@@ -1,9 +1,10 @@
 #ifndef MULTIPLEXER_H
 #define MULTIPLEXER_H
 
-//#include <Wire.h>
+#include "core/core.h"
 #include "vector"
 #include "flight/kegelsonde.h"
+#include "flight/msg.h"
 
 namespace bfs{
 
@@ -19,6 +20,7 @@ public:
 private:
     const int SLAVE_ADDR;
     const int TCAADDR;
+    int count;
     std::vector<int> availableSensors;
 
     bool tcaselect(uint8_t i);

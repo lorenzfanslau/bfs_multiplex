@@ -54,9 +54,9 @@ void SensorsInit(const SensorConfig &cfg) {
     MsgError("Unable to initialize IMU.");
   }
   /* Initialize GNSS */
-  if (!gnss.Init(cfg.gnss)) {
-    MsgError("Unable to initialize GNSS.");
-  }
+  //if (!gnss.Init(cfg.gnss)) {
+  //  MsgError("Unable to initialize GNSS.");
+  //}
   /* Multiplexer initialisieren (testen)*/
   if (!multiplexer.Begin()){
       MsgError("hat nicht hingehauen, schade.");
@@ -77,31 +77,32 @@ void SensorsInit(const SensorConfig &cfg) {
   }
   MsgInfo("done.\n");
   /* Initialize inceptors */
-  MsgInfo("Initializing inceptors...");
-  while (!inceptor.Init(&SBUS_UART)) {}
-  MsgInfo("done.\n");
+  //MsgInfo("Initializing inceptors...");
+  //while (!inceptor.Init(&SBUS_UART)) {}
+  //MsgInfo("done.\n");
 }
 void SensorsRead(SensorData * const data) {
   if (!data) {return;}
   /* Read inceptors */
-  data->inceptor.new_data = inceptor.Read();
+  /*data->inceptor.new_data = inceptor.Read();
   if (data->inceptor.new_data) {
     data->inceptor.ch = inceptor.ch();
     data->inceptor.ch17 = inceptor.ch17();
     data->inceptor.ch18 = inceptor.ch18();
     data->inceptor.lost_frame = inceptor.lost_frame();
     data->inceptor.failsafe = inceptor.failsafe();
-  }
+  }*/
   /* Read IMU */
   if (!imu.Read(&data->imu)) {
     MsgWarning("Unable to read IMU data.\n");
   }
+  //MsgInfo("vor Multiplexer Read\n");
   /* Auslesen des zusätzlichen Sensors*/
   if (!multiplexer.Read(&data->edit_pres)){
     MsgWarning("Sensor kann nicht ausgelesen werden");
   }
   /* Read GNSS */
-  gnss.Read(&data->gnss);
+  //gnss.Read(&data->gnss);
   /* Set whether pitot static is installed */
   data->pitot_static_installed = pitot_static_installed_;
   /* Read pressure transducers */

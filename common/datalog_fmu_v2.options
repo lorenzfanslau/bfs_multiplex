@@ -25,3 +25,4 @@ DatalogMessage.vms_sbus_cmd max_count:16 fixed_count:true
 DatalogMessage.vms_pwm_cmd max_count:8 fixed_count:true
 DatalogMessage.vms_aux max_count:24 fixed_count:true
 DatalogMessage.telem_param max_count:24 fixed_count:true
+DatalogMessage.pres_pa max_count:4 fixed_count:false

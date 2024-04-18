@@ -132,7 +132,10 @@ void DatalogAdd(const AircraftData &ref) {
   /* eigener Sensor*/
   datalog_msg_.new_data = ref.sensor.edit_pres.new_data;
   datalog_msg_.healthy = ref.sensor.edit_pres.healthy;
-  datalog_msg_.pres_pa = ref.sensor.edit_pres.pres_mbar;
+  for (size_t i = 0; i < ref.sensor.edit_pres.pres_mbar.size(); ++i) {
+        datalog_msg_.pres_pa[i]=ref.sensor.edit_pres.pres_mbar[i];
+    }
+ 
 
   /* Analog data */
   for (std::size_t i = 0; i < NUM_AIN_PINS; i++) {

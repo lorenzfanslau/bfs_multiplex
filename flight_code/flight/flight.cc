@@ -64,6 +64,7 @@ void run() {
   #endif
   /* System data */
   SysRead(&data.sys);
+  
   /* Sensor data */
   SensorsRead(&data.sensor);
   /* Nav filter */
